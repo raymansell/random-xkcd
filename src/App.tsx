@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import Layout from './components/Layout';
-import ComicCard from './components/ComicCard';
 import useFetchComic from './hooks/useFetchComic/useFetchComic';
-import StarRating from './components/StarRating';
+import ComicContainer from './components/ComicContainer';
+import Loader from './components/Loader';
 import './assets/styles/App.scss';
 
 const App = () => {
@@ -13,20 +13,15 @@ const App = () => {
   );
   return (
     <Layout>
-      {isLoading && <h1>Loading...</h1>}
+      {isLoading && (
+        <>
+          <h3 style={{ marginBottom: '1rem' }}>Loading...</h3>
+          <Loader show />
+        </>
+      )}
       {error && <h4>Oops something went wrong. Try refreshing</h4>}
       {comic ? (
-        <>
-          <ComicCard comic={comic} />
-          <h4>Rate this comic</h4>
-          <StarRating />
-          <button
-            className='refetch-btn'
-            onClick={() => setShouldRefetch(true)}
-          >
-            New random comic
-          </button>
-        </>
+        <ComicContainer comic={comic} setShouldRefetch={setShouldRefetch} />
       ) : null}
     </Layout>
   );
