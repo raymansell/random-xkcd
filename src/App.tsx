@@ -2,6 +2,7 @@ import './assets/styles/App.scss';
 import Layout from './components/Layout';
 import ComicCard from './components/ComicCard';
 import useFetchComic from './hooks/useFetchComic/useFetchComic';
+import StarRating from './components/StarRating';
 
 const App = () => {
   const { comic, isLoading, error } = useFetchComic();
@@ -10,6 +11,7 @@ const App = () => {
       {isLoading && <h1>Loading...</h1>}
       {error && <h4>Oops something went wrong. Try refreshing</h4>}
       {comic ? <ComicCard comic={comic} /> : null}
+      <StarRating />
     </Layout>
   );
 };

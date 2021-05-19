@@ -1,0 +1,43 @@
+.rating-container {
+  margin-top: 1rem;
+}
+
+.rating-group {
+  display: inline-flex;
+}
+
+/* hide radio inputs */
+.rating-input {
+  position: absolute !important;
+  left: -9999px !important;
+}
+
+/* hide 'none' input from screenreaders */
+.rating-input--none {
+  display: none;
+}
+
+.rating-label {
+  cursor: pointer;
+  padding: 0 0.1em;
+  font-size: 2rem;
+}
+
+.rating-star {
+  color: orange;
+}
+
+/* if any input is checked, make its following siblings grey */
+.rating-input:checked ~ .rating-label .rating-star {
+  color: #bbb;
+}
+
+/* make all stars orange on rating group hover */
+.rating-group:hover .rating-label .rating-star {
+  color: orange;
+}
+
+/* make hovered input's following siblings grey on hover */
+.rating-input:hover ~ .rating-label .rating-star {
+  color: #bbb;
+}
