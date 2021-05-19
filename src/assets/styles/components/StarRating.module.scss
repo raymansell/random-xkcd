@@ -1,5 +1,7 @@
+@import '../variables';
+
 .rating-container {
-  margin-top: 1rem;
+  margin: 0.5rem 0 1rem 0;
 }
 
 .rating-group {
@@ -29,7 +31,7 @@
 
 /* if any input is checked, make its following siblings grey */
 .rating-input:checked ~ .rating-label .rating-star {
-  color: #bbb;
+  color: $mainGray;
 }
 
 /* make all stars orange on rating group hover */
@@ -39,5 +41,5 @@
 
 /* make hovered input's following siblings grey on hover */
 .rating-input:hover ~ .rating-label .rating-star {
-  color: #bbb;
+  color: $mainGray;
 }

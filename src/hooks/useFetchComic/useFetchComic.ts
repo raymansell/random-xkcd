@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from 'react';
+import { Dispatch, SetStateAction, useEffect, useReducer } from 'react';
 import {
   State,
   Action,
@@ -40,7 +40,10 @@ const reducer = (state: State, action: Action): State => {
   }
 };
 
-const useFetchComic = (): State => {
+const useFetchComic = (
+  shouldRefetch: boolean,
+  setShouldRefetch: Dispatch<SetStateAction<boolean>>
+): State => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   let abortCtrl: AbortController;
@@ -57,6 +60,7 @@ const useFetchComic = (): State => {
               type: GET_LATEST_XKCD_NUM,
               payload: { latestXkcdNum: num as number },
             });
+            setShouldRefetch(true);
           }
           throw new Error(`Error: ${res.status}`);
         } catch (err) {
@@ -64,7 +68,7 @@ const useFetchComic = (): State => {
         }
       };
       setLatestXkcdNum();
-    } else {
+    } else if (shouldRefetch) {
       // eslint-disable-next-line react-hooks/exhaustive-deps
       abortCtrl = new AbortController();
       const opts = {
@@ -82,7 +86,10 @@ const useFetchComic = (): State => {
           }
           throw new Error(`Error: ${res.status}`); // Failed HTTP responses (4xx 5xx)
         })
-        .then((data) => dispatch({ type: GET_DATA, payload: { comic: data } }))
+        .then((data) => {
+          dispatch({ type: GET_DATA, payload: { comic: data } });
+          setShouldRefetch(false);
+        })
         .catch((err) => {
           if (err.name === 'AbortError') return; // Ignoring errors due to cancelling
           dispatch({ type: ERROR, payload: { error: err } });
@@ -90,7 +97,7 @@ const useFetchComic = (): State => {
     }
 
     return abortCtrl ? () => abortCtrl.abort() : undefined;
-  }, [state.latestXkcdNum]);
+  }, [state.latestXkcdNum, shouldRefetch]);
   return state;
 };
 

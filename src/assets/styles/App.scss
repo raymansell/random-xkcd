@@ -6,6 +6,25 @@
   box-sizing: border-box;
 }
 
+.refetch-btn {
+  color: black;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  padding: 8px 30px;
+  margin-top: 0.5rem;
+  background-color: $mainGray;
+  border-radius: 8px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.refetch-btn:hover {
+  background-color: goldenrod;
+}
+
 body {
   font-family: $theme-font;
   background: $background;
