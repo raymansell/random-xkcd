@@ -1,3 +1,4 @@
+import styles from '../assets/styles/components/ComicCard.module.scss';
 import { Comic } from '../types';
 
 interface ComicCardProps {
@@ -6,8 +7,8 @@ interface ComicCardProps {
 
 const ComicCard = ({ comic }: ComicCardProps) => {
   return (
-    <div>
-      <h2>{comic.title}</h2>
+    <div className={styles.container}>
+      <h2 className={styles.title}>{comic.title}</h2>
       <img src={comic.img} alt={comic.alt} />
     </div>
   );

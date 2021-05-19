@@ -1,0 +1,17 @@
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 900px;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 1rem 0.5rem;
+
+  .logo-img {
+    max-width: 200px;
+  }
+
+  h3 {
+    text-transform: uppercase;
+  }
+}
