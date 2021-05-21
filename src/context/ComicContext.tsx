@@ -15,15 +15,7 @@ import {
   ERROR,
 } from './types';
 import comicReducer from './ComicReducer';
-
-// CORS enabled version of the xkcd API. Credit goes to https://github.com/khalby786/getxkcd
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-const BASE_URL = process.env.REACT_APP_XKCD_API!;
-
-const randomComicURL = (maxNum: number) => {
-  const comicNum = Math.floor(Math.random() * (maxNum + 1));
-  return `${BASE_URL}/?num=${comicNum}`;
-};
+import { BASE_URL, randomComicURL } from './utils';
 
 const ComicContext =
   createContext<{ state: State; dispatch: MyDispatch } | undefined>(undefined);
@@ -101,8 +93,6 @@ const useComic = () => {
             throw new Error(`Error: ${res.status}`); // Failed HTTP responses (4xx 5xx)
           })
           .then((data) => {
-            // mocking a server GET request with localStorage.getItem()
-
             dispatch({
               type: GET_DATA,
               payload: { comic: data },
