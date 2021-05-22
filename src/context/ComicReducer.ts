@@ -5,6 +5,7 @@ import {
   MAKE_REQUEST,
   GET_DATA,
   ERROR,
+  UPDATE_RATING,
 } from './types';
 
 const comicReducer = (state: State, action: Action): State => {
@@ -20,6 +21,14 @@ const comicReducer = (state: State, action: Action): State => {
         ...state,
         isLoading: false,
         comic: action.payload.comic,
+        rating: action.payload.rating,
+        history: action.payload.history,
+      };
+    }
+    case UPDATE_RATING: {
+      return {
+        ...state,
+        rating: action.payload.rating,
       };
     }
     case ERROR: {

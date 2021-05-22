@@ -4,9 +4,10 @@ import styles from '../assets/styles/components/StarRating.module.scss';
 
 interface StarIconProps {
   idx: number;
+  checked: boolean;
   handleClick: (e: ChangeEvent<HTMLInputElement>) => void;
 }
-const StarIcon = ({ idx, handleClick }: StarIconProps) => {
+const StarIcon = ({ idx, handleClick, checked }: StarIconProps) => {
   return (
     <>
       <label
@@ -23,6 +24,7 @@ const StarIcon = ({ idx, handleClick }: StarIconProps) => {
         id={`rating-${idx}`}
         value={`${idx}`}
         type='radio'
+        checked={checked}
       />
     </>
   );
