@@ -3,6 +3,7 @@ import { useComic } from '../context/ComicContext';
 import Loader from './Loader';
 import ComicCard from './ComicCard';
 import StarRating from './StarRating';
+import styles from '../assets/styles/components/ComicContainer.module.scss';
 
 const ComicContainer = () => {
   const {
@@ -39,14 +40,31 @@ const ComicContainer = () => {
       {error && <h4>Oops something went wrong. Try refreshing</h4>}
       {comic ? (
         <>
-          <button onClick={() => handleClick('prev')}>prev</button>
-          <button onClick={() => handleClick('next')}>next</button>
           <ComicCard comic={comic} />
           <h4>Rate this comic</h4>
           <StarRating rating={rating} />
-          <button className='refetch-btn' onClick={() => handleClick('random')}>
-            New random comic
-          </button>
+          <div className={styles['btn-container']}>
+            <button
+              className={styles.sides}
+              onClick={() => handleClick('prev')}
+            >
+              {' '}
+              &lt;
+            </button>
+            <button
+              className={styles['random-btn']}
+              onClick={() => handleClick('random')}
+            >
+              New random comic
+            </button>
+            <button
+              className={styles.sides}
+              onClick={() => handleClick('next')}
+            >
+              {' '}
+              &gt;
+            </button>
+          </div>
         </>
       ) : null}
     </>

@@ -1,0 +1,49 @@
+@import '../variables';
+
+.random-btn {
+  color: black;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  padding: 8px 10px;
+  margin: 0.5rem 0.7rem 2rem 0.7rem;
+  background-color: $mainGray;
+  border-radius: 8px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  &:hover {
+    background-color: goldenrod;
+  }
+}
+
+.sides {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  height: 2rem;
+  width: 2rem;
+  margin: 0 0.25rem;
+  border-radius: 50%;
+  font-weight: 600;
+  &:hover {
+    text-decoration: underline;
+  }
+  &:focus {
+    outline: 0;
+  }
+  box-shadow: transparent 0px 0px 0px 1px, transparent 0px 0px 0px 4px,
+    rgba(0, 0, 0, 0.18) 0px 2px 4px;
+  &:hover {
+    text-decoration: none;
+    box-shadow: transparent 0px 0px 0px 1px, transparent 0px 0px 0px 4px,
+      rgba(0, 0, 0, 0.12) 0px 6px 16px;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .random-btn {
+    padding: 8px 30px;
+  }
+}

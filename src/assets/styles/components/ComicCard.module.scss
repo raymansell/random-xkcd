@@ -3,11 +3,22 @@
   display: grid;
   place-items: center;
   padding: 0.5rem 1rem 1rem 1rem;
-  margin-bottom: 1rem;
+  margin: 0 1rem 1rem 1rem;
   border-radius: 10px;
   box-shadow: 0 7px 30px rgba(52, 31, 97, 0.1);
 }
 
 .title {
   margin-bottom: 0.5rem;
+}
+
+.comic-num {
+  margin: 0.8rem 0 0 auto;
+  font-style: italic;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.comic-img {
+  max-width: 100%;
 }
