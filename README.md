@@ -1,13 +1,13 @@
 # Prueba técnica Masivian
 
-<img src="https://i.imgur.com/wZvxOV0.png" alt="drawing" width="360"/>
+<img src="https://i.imgur.com/jym2PEr.png" alt="drawing" width="360"/>
 
 Proyecto en el cual se consume la API de los comics de xkcd de forma aleatoria, con la opción de clasificarlos con una puntuación de 1 a 5 estrellas.
 
 Tecnologías implementadas:
 
 - React.js + TypeScript.
-- Saas.
+- Sass.
 - ESLint, Prettier.
 
 ## Ver sitio
