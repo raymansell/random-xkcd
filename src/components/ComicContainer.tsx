@@ -38,32 +38,34 @@ const ComicContainer = () => {
         </>
       )}
       {error && <h4>Oops something went wrong. Try refreshing</h4>}
-      {comic ? (
+      {comic && latestXkcdNum ? (
         <>
           <ComicCard comic={comic} />
           <h4>Rate this comic</h4>
           <StarRating rating={rating} />
           <div className={styles['btn-container']}>
-            <button
-              className={styles.sides}
-              onClick={() => handleClick('prev')}
-            >
-              {' '}
-              &lt;
-            </button>
+            {comic.num > 1 && (
+              <button
+                className={styles.sides}
+                onClick={() => handleClick('prev')}
+              >
+                &lt;
+              </button>
+            )}
             <button
               className={styles['random-btn']}
               onClick={() => handleClick('random')}
             >
               New random comic
             </button>
-            <button
-              className={styles.sides}
-              onClick={() => handleClick('next')}
-            >
-              {' '}
-              &gt;
-            </button>
+            {comic.num < latestXkcdNum && (
+              <button
+                className={styles.sides}
+                onClick={() => handleClick('next')}
+              >
+                &gt;
+              </button>
+            )}
           </div>
         </>
       ) : null}
